@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  
+  # frontend:
+  #   image: ${APP}-frontend
+  #   container_name: ${APP}-frontend
+
+  # backend:
+  #   image: ${APP}-backend
+  #   container_name: ${APP}-backend
+  #   depends_on:
+  #     - database
+  #   ports:
+  #     - 8080:8080
+
+  database:
+    image: postgres
+    container_name: ${APP}-pg-db
+    restart: always
+    environment: 
+      - POSTGRES_DB=${APP}_db
+      - POSTGRES_USER=${APP}_admin_user
+      - POSTGRES_PASSWORD=${PASSWORD}
+      
+    # Bind mount the default Postgres port
+    ports:
+    - "5432:5432"
+
