@@ -19,11 +19,11 @@ services:
     container_name: ${APP}-pg-db
     restart: always
     environment: 
-      - POSTGRES_DB=${APP}_db
-      - POSTGRES_USER=${APP}_admin_user
-      - POSTGRES_PASSWORD=${PASSWORD}
+      - POSTGRES_DB=${PGHOST}
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${APP_DB_ADMIN_PASSWORD}
       
     # Bind mount the default Postgres port
     ports:
-    - "5432:5432"
+    - ${PGPORT}:5432
 
